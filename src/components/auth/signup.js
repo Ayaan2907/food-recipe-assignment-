@@ -26,6 +26,7 @@ export default function Signup() {
       },
       (error) => {
         window.alert(error.message);
+        window.alert(error.message);
         console.log(error);
       }
     );
@@ -94,6 +95,16 @@ export default function Signup() {
                       setUser({ ...user, password: e.target.value })
                     }
                   />
+                </div>
+              </div>
+              <div className="flex items-center justify-between">
+                <div className="text-sm">
+                  <a
+                    href="/"
+                    className="font-medium text-indigo-600 hover:text-indigo-500"
+                  >
+                     Have Account, Sign In
+                  </a>
                 </div>
               </div>
               <div>
