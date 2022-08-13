@@ -10,17 +10,6 @@ import RecipeDetails from "./components/recipeDetails";
 function App() {
   return (
     <>
-      <div>just dummy data in components</div>
-      <div> available Routes
-                <ul>
-                    <li> / </li>
-                    <li> /signup </li>
-                    <li> /home </li>
-                    <li> /recipes </li>
-                    <li> /recipes/:id </li>
-                </ul>
-
-            </div>
       <Routes>
         {/* <Route path="*" element={<Navigate to='/home' />} /> */}
         <Route path="/" element={<Login />} />
