@@ -1,20 +1,22 @@
-import React, { useEffect, useState } from "react";
-import { account } from "../../appwrite/appwrite.config";
+import React from "react";
+import { account } from "../../appwrite/api";
 import { useNavigate } from "react-router-dom";
-import { v4 as uuidv4 } from "uuid";
+// import { v4 as uuidv4 } from "uuid";
+// import  { useEffect, useState } from "react";
 
-export default function Signup() {
+export default function Signup({ user, setUser }) {
   const navigate = useNavigate();
-  const [user, setUser] = useState({
-    name: "",
-    email: "",
-    password: "",
-  });
-  const userSignup = async (e) => {
+  // const [user, setUser] = useState({
+  //   name: "",
+  //   email: "",
+  //   password: "",
+  // });
+
+  const handleSignup = async (e) => {
     e.preventDefault();
 
     const promise = account.create(
-      uuidv4(),
+      // uuidv4(),
       user.email,
       user.password,
       user.name
@@ -22,11 +24,11 @@ export default function Signup() {
     promise.then(
       (response) => {
         console.log(response);
+        setUser(response);
         navigate("/");
       },
       (error) => {
-        window.alert(error.message);
-        window.alert(error.message);
+        window.alert(error.message); // alert the error message regarding incorrect format of password, existance of user etc
         console.log(error);
       }
     );
@@ -111,7 +113,7 @@ export default function Signup() {
                 <button
                   type="submit"
                   className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  onClick={userSignup}
+                  onClick={handleSignup}
                 >
                   Sign Up
                 </button>
