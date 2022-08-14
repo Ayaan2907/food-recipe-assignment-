@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { account } from "../../appwrite/appwrite.config";
+import React from "react";
 import { useNavigate } from "react-router-dom";
+import { account } from "../../appwrite/api";
+// import {useEffect, useState} from "react";
 
-export default function Login() {
+export default function Login({user, setUser}) {
   const navigate = useNavigate();
-  const [user, setUser] = useState({
-    email: "",
-    password: "",
-  });
+  // const [user, setUser] = useState({
+  //   email: "",
+  //   password: "",
+  // });
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -17,6 +18,7 @@ export default function Login() {
         user.password
       );
       console.log(response);
+      setUser(response); // set user to response
       navigate("/home"); // navigate to home page
     } catch (error) {
       window.alert(
