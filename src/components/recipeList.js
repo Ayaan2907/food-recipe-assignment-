@@ -2,13 +2,21 @@ import React, { useEffect, useState } from "react";
 import RecipeCard from "./recipeCard";
 import { databases } from "../appwrite/api";
 import { config } from "../appwrite/appwrite.config";
+const RESULT_LENGTH = 100;
 export default function RecipeList() {
   const [recipies, setRecipies] = useState();
   const [loading, setLoading] = useState(false);
-
   useEffect(() => {
     setLoading(true);
-    const getRecipiesPromise = databases.listDocuments(config.COLLECTION_ID);
+    const getRecipiesPromise = databases.listDocuments(config.COLLECTION_ID,
+      [],  
+      RESULT_LENGTH,
+      0,
+      '',
+      'before',
+      ["name"],
+      ["ASC"]
+    );
     getRecipiesPromise.then(
       (response) => {
         setRecipies(response.documents);
@@ -30,11 +38,9 @@ export default function RecipeList() {
           <div>Recipe list</div>
           {recipies &&
             recipies.map((recipe) => (
-              <div key={recipe.$id}>
-                <p> {recipe.name} </p>
-              </div>
+                <RecipeCard key={recipe.$id} recipe={recipe} />
+              
             ))}
-          {/* <RecipeCard key={recipe.$id} recipe={recipe} /> */}
         </div>
       )}
     </>

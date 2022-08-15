@@ -1,6 +1,6 @@
 import React from "react";
 import { account } from "../../appwrite/api";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 // import  { useEffect, useState } from "react";
 
@@ -101,12 +101,12 @@ export default function Signup({ user, setUser }) {
               </div>
               <div className="flex items-center justify-between">
                 <div className="text-sm">
-                  <a
-                    href="/"
+                  <Link
+                    to="/"
                     className="font-medium text-indigo-600 hover:text-indigo-500"
                   >
-                     Have Account, Sign In
-                  </a>
+                    Have Account, Sign In
+                  </Link>
                 </div>
               </div>
               <div>

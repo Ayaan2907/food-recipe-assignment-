@@ -1,8 +1,11 @@
 import React, { useState } from "react";
-import { account, databases } from "../appwrite/api";
-import { config as server } from "../appwrite/appwrite.config";
+import { databases } from "../../appwrite/api";
+import { config as server } from "../../appwrite/appwrite.config";
 import { v4 as uuid } from "uuid";
-export default function RecipeForm({ user }) {
+import { useNavigate } from "react-router-dom";
+
+export default function RecipeForm() {
+  const navigate = useNavigate();
   const [ingredient, setIngredient] = useState("");
   const [recipe, setRecipe] = useState({
     name: "",
@@ -33,7 +36,9 @@ export default function RecipeForm({ user }) {
     const ingr = ingredient.split(/[,\s]\s*/).map((item) => item.trim());
     console.log(ingr);
     setRecipe({ ...recipe, ingredients: ingr });
-    // FIXME: ingredients are not being added to the recipe object in database
+    // FIXME: ingredients are not being added to the recipe object in database, >> just seperate it using , its working
+
+    navigate("/home"); // after submitting the form it will redirect to home page
   };
 
   return (
@@ -63,7 +68,7 @@ export default function RecipeForm({ user }) {
           placeholder="image url"
           onChange={(e) => setRecipe({ ...recipe, image: e.target.value })}
         />
-        <button type="submit">Add Ingredient</button>
+        <button type="submit">Add Recipe</button>
       </form>
     </>
   );
