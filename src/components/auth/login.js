@@ -1,9 +1,8 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { account } from "../../appwrite/api";
-// import {useEffect, useState} from "react";
 
-export default function Login({user, setUser}) {
+export default function Login({ user, setUser }) {
   const navigate = useNavigate();
   // const [user, setUser] = useState({
   //   email: "",
@@ -121,12 +120,12 @@ export default function Login({user, setUser}) {
               </div>
               <div className="flex items-center justify-between">
                 <div className="text-sm">
-                  <a
-                    href="/signup"
+                  <Link
+                    to="/signup"
                     className="font-medium text-indigo-600 hover:text-indigo-500"
                   >
                     Don't have Account, Sign Up
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div>
