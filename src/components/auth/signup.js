@@ -1,7 +1,7 @@
 import React from "react";
 import { account } from "../../appwrite/api";
 import { useNavigate, Link } from "react-router-dom";
-import { v4 as uuidv4 } from "uuid";
+// import { v4 as uuidv4 } from "uuid";
 // import  { useEffect, useState } from "react";
 
 export default function Signup({ user, setUser }) {
@@ -17,6 +17,7 @@ export default function Signup({ user, setUser }) {
 
     const promise = account.create(
       // uuidv4(),
+      "unique()",
       user.email,
       user.password,
       user.name

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 export default function RecipeCard({ recipe }) {
   return (
@@ -8,7 +8,7 @@ export default function RecipeCard({ recipe }) {
         <p>{recipe.name}</p>
         <p>{recipe.description}</p>
         <p>{recipe.ingredients.map((item) => item)}</p>
-        <img src={recipe.image} />
+        <img src={recipe.image} alt="" />
       </Link>
     </>
   );
