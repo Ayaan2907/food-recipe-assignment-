@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { databases } from "../appwrite/api";
 import Navbar from "./Navbar/navbar";
+import "../styles/recipeDetails.css";
 
 export default function RecipeDetails({ user, setUser }) {
   const { collectionId, recipeId } = useParams();
@@ -22,16 +23,19 @@ export default function RecipeDetails({ user, setUser }) {
 
   return (
     <>
+
       <div>recipeDetails</div>
       <Navbar user={user} setUser={setUser} />
+      <div className="recipeDetails">
       {recipe && (
         <>
           <img src={recipe.image} alt="" />
           <div>{recipe.name}</div>
           <div>{recipe.description}</div>
           <div>{recipe.ingredients[0]}</div>
-        </>
+          </>
       )}
+      </div>
     </>
   );
 }
